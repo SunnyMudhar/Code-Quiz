@@ -17,6 +17,7 @@ if (document.URL.includes("highscores.html")) {
 }
 
 function setScores(player, score) {
+    retrieveScores();
     playerScore.player = player;
     playerScore.score = score;
     scoresArr.push(playerScore);

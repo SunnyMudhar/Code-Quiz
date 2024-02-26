@@ -12,7 +12,7 @@ var initialsInput = document.querySelector("#initials");
 var soundCorrect = new Audio("./assets/sfx/correct.wav");
 var soundIncorrect = new Audio("./assets/sfx/incorrect.wav");
 var currentScore = 0;
-var timeLeft;
+var timeLeft = 40;
 
 if (startCanvas) {
   startBtn.addEventListener("click", function (event) {
@@ -24,7 +24,7 @@ if (startCanvas) {
 }
 
 function setUpQuestionCanvas() {
-  timeLeft = 10;
+
   questionChoices.innerHTML = "";
 
   var currentQuestion = getQuestion();
@@ -70,6 +70,7 @@ if (questionChoices) {
       } else {
         feedback.textContent = "Wrong!";
         soundIncorrect.play();
+        timeLeft -= 10;
       }
 
       setUpQuestionCanvas();
@@ -86,7 +87,7 @@ if (endScreenCanvas) {
     } else {
       setScores(initialsInput.value, currentScore);
       initialsInput.value === "";
-      window.location.href("highscores.html");
+      window.location.href = "highscores.html";
     }
   });
 }
@@ -101,7 +102,7 @@ function setTime() {
     timeElement.textContent = timeLeft;
 
     if (timeLeft === 0) {
-      setUpQuestionCanvas();
+      setUpEndScreenCanvas();
     }
   }, 1000);
 }
