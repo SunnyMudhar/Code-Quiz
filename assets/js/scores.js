@@ -52,7 +52,3 @@ function clearHighScores() {
     localStorage.removeItem("scores");
     window.location.reload();
 }
-
-function goBack() {
-    window.location.href = "index.html";
-}
